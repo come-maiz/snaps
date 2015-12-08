@@ -1,0 +1,20 @@
+name: gobot-arduino
+version: 0.1
+vendor: Leo Arias <elopio@ubuntu.com>
+summary: Example to connect to Arduino using the Gobot framework
+description: |
+  The example connects to an Arduino over a serial connection, and blinks an
+  LED once per second.
+icon: icon.png
+
+#binaries:
+#  example:
+#    exec: bin/arduino
+
+parts:
+  gobot:
+    plugin: go
+    source: git://github.com/hybridgroup/gobot
+  arduino-example:
+    plugin: go
+    source: .

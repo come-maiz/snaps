@@ -1,7 +1,7 @@
-name: cylon-arduino
+name: johnny-five-arduino
 version: 0.1
 vendor: Leo Arias <elopio@ubuntu.com>
-summary: Example to connect to Arduino using the Cylon framework
+summary: Example to connect to Arduino using the Johnny-Five framework
 description: |
   The example connects to an Arduino over a serial connection, and blinks an
   LED once per second.
@@ -12,13 +12,10 @@ binaries:
     exec: bin/example.sh
 
 parts:
-  cylon-arduino:
+  johnny-five:
     plugin: nodejs
     node-packages:
-      - cylon
-      - cylon-firmata
-      - cylon-gpio
-      - cylon-i2c
+      - johnny-five
   wrapper:
     plugin: copy
     files:
