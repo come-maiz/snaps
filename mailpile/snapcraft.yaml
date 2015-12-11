@@ -8,7 +8,7 @@ icon: icon.png
 
 services:
   server:
-    start: bin/mp
+    start: bin/mailpile.sh
     description: start mailpile service
 
 parts:
@@ -22,8 +22,9 @@ parts:
       - gnupg
       - openssl
       - python-lxml
-  starter:
+  wrapper:
     after: [mailpile]
     plugin: copy
     files:
       parts/mailpile/src/mp: bin/mp
+      mailpile.sh: bin/mailpile.sh
