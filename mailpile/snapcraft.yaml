@@ -1,0 +1,22 @@
+name: mailpile
+version: 0
+vendor: Leo Arias <elopio@ubuntu.com>
+summary: A web-mail client
+description: |
+  A modern, fast web-mail client with user-friendly encryption and privacy features.
+icon: icon.png
+
+services:
+  server:
+    start: bin/mp
+    description: start mailpile service
+
+parts:
+  mailpile:
+    plugin: python2
+    source: git://github.com/mailpile/Mailpile
+  starter:
+    after: [mailpile]
+    plugin: copy
+    files:
+      parts/mailpile/src/mp: bin/mp
