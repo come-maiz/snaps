@@ -15,6 +15,13 @@ parts:
   mailpile:
     plugin: python2
     source: git://github.com/mailpile/Mailpile
+    build-packages:
+      - libxml2-dev
+      - libxslt1-dev
+    stage-packages:
+      - gnupg
+      - openssl
+      - python-lxml
   starter:
     after: [mailpile]
     plugin: copy
