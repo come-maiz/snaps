@@ -8,13 +8,15 @@ description: |
 
 apps:
   keepassx:
-    command: keepassx
+    command: qt5-launch keepassx
     plugs: [unity7, opengl]
 
 parts:
   keepassx:
     plugin: cmake
     source: https://github.com/keepassx/keepassx.git
+    stage-packages:
+      - libqt5gui5
     build-packages:
       - g++
       - qtbase5-dev
@@ -23,3 +25,4 @@ parts:
       - qttools5-dev-tools
       - libgcrypt20-dev
       - zlib1g-dev
+    after: [qt5conf]
