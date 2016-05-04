@@ -1,0 +1,39 @@
+name: cura
+version: 2.1.0-snap-0.1
+summary: Free software to prepare models for 3D printing
+description: |
+  The world’s most advanced 3D printer software.
+
+apps:
+  cura:
+    command: cura
+    plugs: [unity7, opengl]
+
+parts:
+  protobuf:
+    plugin: autotools
+    source: https://github.com/Ultimaker/protobuf.git
+    build-packages: [unzip]
+  libarcus:
+    plugin: cmake
+ #   source: https://github.com/Ultimaker/libArcus.git
+    # FIXME the cmake file was giving errors.
+    source: /home/elopio/workspace/ultimaker/libArcus
+    configflags:
+      - -DBUILD_STATIC=ON
+      - -DBUILD_EXAMPLES=OFF
+      # TODO python requires sip. --elopio - 2015-05-03
+      - -DBUILD_PYTHON=OFF
+    after:
+      - protobuf
+  curaengine:
+    plugin: cmake
+    source: https://github.com/Ultimaker/CuraEngine.git
+    after: [libarcus]
+  uranium:
+    plugin: cmake
+    source: https://github.com/Ultimaker/Uranium.git
+  cura:
+    plugin: cmake
+    source: https://github.com/Ultimaker/Cura.git
+    after: [uranium]
