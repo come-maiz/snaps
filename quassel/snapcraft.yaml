@@ -1,0 +1,30 @@
+name: quasselclient
+version: 0.12.4-snappy-0.1
+summary: modern, graphical, cross-platform, distributed IRC client
+description: |
+  One (or multiple) client(s) can attach to and detach from a central core
+  that stays permanently online. Re-attaching your client will show your IRC
+  session in the same state as you left it in (plus whatever happened while
+  you were gone), and this even when you re-attach from a different location.
+
+apps:
+  quasselclient:
+    command: qt5-launch quasselclient
+    plugs: [network, unity7, opengl]
+
+parts:
+  quassel:
+    plugin: cmake
+    source: https://github.com/quassel/quassel.git
+    build-packages:
+      - g++
+      - qtbase5-dev
+    stage-packages:
+      - libicu-dev
+      - libqt5gui5
+    configflags:
+      - -DWANT_CORE=OFF
+      - -DWANT_QTCLIENT=ON
+      - -DWANT_MONO=OFF
+      - -DUSE_QT5=ON
+    after: [qt5conf]
