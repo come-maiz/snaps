@@ -19,6 +19,7 @@ parts:
       - libgtk2.0-0
       - libqt5gui5
       - unity-gtk2-module
+      - appmenu-qt5
     build-packages:
       - g++
       - qtbase5-dev
