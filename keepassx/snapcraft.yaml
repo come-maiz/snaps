@@ -20,6 +20,7 @@ parts:
       - libqt5gui5
       - unity-gtk2-module
       - appmenu-qt5
+      - dconf-gsettings-backend
     build-packages:
       - g++
       - qtbase5-dev
@@ -37,3 +38,7 @@ parts:
     plugin: copy
     files:
       gschemas.compiled: usr/share/glib-2.0/schemas/gschemas.compiled
+  giomodule:
+    plugin: copy
+    files:
+      giomodule.cache: usr/lib/x86_64-linux-gnu/gio/modules/giomodule.cache
