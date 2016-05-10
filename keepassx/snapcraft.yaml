@@ -16,7 +16,9 @@ parts:
     plugin: cmake
     source: https://github.com/keepassx/keepassx.git
     stage-packages:
+      - libgtk2.0-0
       - libqt5gui5
+      - unity-gtk2-module
     build-packages:
       - g++
       - qtbase5-dev
@@ -26,3 +28,11 @@ parts:
       - libgcrypt20-dev
       - zlib1g-dev
     after: [qt5conf]
+  qt5conf:
+    build-packages: [dpkg-dev]
+    plugin: make
+    source: https://github.com/elopio/qt5conf.git
+  gschemas:
+    plugin: copy
+    files:
+      gschemas.compiled: usr/share/glib-2.0/schemas/gschemas.compiled
